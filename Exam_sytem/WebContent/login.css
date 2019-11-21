@@ -1,0 +1,40 @@
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: teal;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.button:hover {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #49bda0;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 230px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.heading
+{
+  border-radius: 4px;
+  background-color: #4699dd;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  margin: 5px;
+}
