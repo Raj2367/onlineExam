@@ -1,0 +1,28 @@
+student list table
+====================
+create table students(
+id varchar2(20),
+name varchar2(20)
+);
+
+
+admin list table
+=================
+create table admin(
+id varchar2(12),
+password varchar2(12)
+);
+
+instruction list table
+======================
+create table instruction(
+rules varchar2(150)
+);
+
+question list table
+====================
+craete table questions(
+question varchar2(100),
+answer varchar2(50)
+);
+
