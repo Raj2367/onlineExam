@@ -1,6 +1,11 @@
+create a sequence
+==================
+CREATE SEQUENCE dept_seq START WITH 1;
+
 student list table
 ====================
 create table students(
+studentId int,
 id varchar2(20),
 name varchar2(20)
 );
