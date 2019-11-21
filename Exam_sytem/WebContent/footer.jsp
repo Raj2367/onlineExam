@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Exam is over bro...</h1>
-	<h2>Result of the exam will be display here</h2>
-	<jsp:include page="footer.jsp"></jsp:include>
+	<br><br>
+	<div align="center">Developed by Pruthwiraj, Vishal, Nitish, Farheen And Supratit</div>
+	<br><br>
 </body>
 </html>

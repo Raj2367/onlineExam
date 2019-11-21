@@ -74,7 +74,7 @@
                 <br>
                 <h1 class="text-center">Question List</h1>
                 <div class="clearfix" style="margin-right: 20px;">
-                    <button type="button" class="btn btn-success btn-lg float-right" data-toggle="modal" data-target="#AddModal">Add Student</button>
+                    <button type="button" class="btn btn-success btn-lg float-right" data-toggle="modal" data-target="#AddModal">Add Question</button>
                 </div>
 
                 <div class="student-list text-center">
@@ -134,20 +134,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="exam.controller.AddQuestion" method="post">
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Regintration No :</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <label for="recipient-name" class="col-form-label">Question</label>
+                            <input type="text" class="form-control" name="question" id="recipient-name">
                         </div>
                         <div class="form-group">
-                            <label for="text" class="col-form-label">Name :</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <label for="text" class="col-form-label">Answer :</label>
+                            <input type="text" class="form-control" name="answer" id="recipient-name">
                         </div>
+                        <input type="submit" class="btn btn-primary" value="Add Question">
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Add Student</button>
+                    <!-- <button type="button" class="btn btn-primary">Add Question</button> -->
                 </div>
             </div>
         </div>
@@ -184,7 +185,7 @@
         </div>
     </div>
 
-    <footer></footer>
+    <jsp:include page="footer.jsp"></jsp:include>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

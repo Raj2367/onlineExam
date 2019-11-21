@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <footer></footer>
+    <jsp:include page="footer.jsp"></jsp:include>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -8,7 +8,9 @@ import java.sql.Statement;
 
 import exam.db.Student;
 import exam.db.Admin;
+import exam.db.Insruction;
 import exam.db.Provider;
+import exam.db.Questions;
 
 public class ExamDAO {
 
@@ -124,6 +126,66 @@ public class ExamDAO {
 		
 		return rs;
 		
+	}
+
+	public static int addStudent(Student c) 
+	{
+		int status = 0;
+		try 
+		{
+			Connection conn = Provider.getOracleConnection();
+			String sql = "insert into students values(dept_seq.nextval,?,?)";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, c.getId());
+			pst.setString(2, c.getPassword());
+			status = pst.executeUpdate();
+			
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return status;
+		
+	}
+
+	public static int addQuestion(Questions c) 
+	{
+		int status = 0;
+		try 
+		{
+			Connection conn = Provider.getOracleConnection();
+			String sql = "insert into questions values(?,?)";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, c.getQuestion());
+			pst.setString(2, c.getAnswer());
+			status = pst.executeUpdate();
+			
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return status;
+		
+	}
+
+	public static int addInstruction(Insruction c) {
+		int status = 0;
+		try 
+		{
+			Connection conn = Provider.getOracleConnection();
+			String sql = "insert into instruction values(?)";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, c.getRules());
+			status = pst.executeUpdate();
+			
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return status;
 	}
 
 }

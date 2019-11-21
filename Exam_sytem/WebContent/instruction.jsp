@@ -77,7 +77,7 @@
         <button type="button" class="button" onclick="window.location.href = 'questions.jsp';">Start Test</button>
     </center>
 
-    <footer></footer>
+    <jsp:include page="footer.jsp"></jsp:include>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
