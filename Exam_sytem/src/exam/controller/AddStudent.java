@@ -34,7 +34,8 @@ public class AddStudent extends HttpServlet {
 		} 
 		else 
 		{
-			out.print("error in student addition");
+			out.print("error in student addition " +status);	
+			response.sendRedirect("adminWelcome.jsp?msg=Error in Student Addition");
 		}
 	}
 

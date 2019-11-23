@@ -20,6 +20,10 @@
 </head>
 
 <body>
+	<%
+		if(request.getParameter("msg") != null)
+			response.sendRedirect("index.jsp?msg=Please do login before proceed! ! ! :)");
+	%>
     <div class="container-fluid display-table">
         <div class="row display-table-row">
             <!-- Side menu -->
@@ -64,7 +68,7 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="#">Logout <i class="fas fa-sign-out-alt"></i><span class="sr-only">(current)</span></a>
+                                        <a class="nav-link" href="index.jsp?msg=Logout successfully :)">Logout <i class="fas fa-sign-out-alt"></i><span class="sr-only">(current)</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -98,8 +102,13 @@
 										{
 											out.print("<td>"+rs.getString(j)+"</td>");
 										}
-										out.print("<td><button class='btn btn-warning' data-toggle='modal' data-target=''#UpdateModal'>Update</button></td>");	
-										out.print(" <td><button class='btn btn-danger'>Delete</button></td>");
+										
+										String idd = rs.getString(1);
+									%>
+										<td><button class='btn btn-warning' data-toggle='modal' onclick="updateId('<% out.print(idd); %>')" data-target="#UpdateModal">Update</button></td>
+					
+										 <td><input type="submit" class='btn btn-danger' data-toggle='modal' onclick="deleteId('<% out.print(idd); %>')" data-target="#DeleteModal" name="id" value="Delete"></td>
+									<%
 										out.print("</tr>");
 									}
 									out.print("</tbody></table>");
@@ -128,7 +137,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Student</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Question</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -143,6 +152,22 @@
                             <label for="text" class="col-form-label">Answer :</label>
                             <input type="text" class="form-control" name="answer" id="recipient-name">
                         </div>
+                        <div class="form-group">
+                            <label for="text" class="col-form-label">Option1 :</label>
+                            <input type="text" class="form-control" name="option1" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="text" class="col-form-label">Option2 :</label>
+                            <input type="text" class="form-control" name="option2" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="text" class="col-form-label">Option3 :</label>
+                            <input type="text" class="form-control" name="option3" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="text" class="col-form-label">Option4 :</label>
+                            <input type="text" class="form-control" name="option4" id="recipient-name">
+                        </div>
                         <input type="submit" class="btn btn-primary" value="Add Question">
                     </form>
                 </div>
@@ -154,32 +179,61 @@
         </div>
     </div>
 
-    <!-- Update student Model -->
+    <!-- Update question Model -->
     <div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Student</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Answer</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="exam.controller.QuestionUpdate" method="post">
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Regintration No :</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <label for="recipient-name" class="col-form-label">Question :</label>
+                            <input type="text" class="form-control" name="que" id="stdid" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="text" class="col-form-label">Name :</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <label for="text" class="col-form-label">New Answer :</label>
+                            <input type="text" class="form-control" name="newAns">
                         </div>
+                        <input type="submit" class="btn btn-primary" value="Update">
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Update</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <!-- Delete question Model -->
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    	<form action="exam.controller.QuestionDelete" method="post">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Question :</label>
+                            <input type="text" class="form-control" name="id" id="stdidd" readonly>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Delete from Database">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    
                 </div>
             </div>
         </div>
@@ -195,9 +249,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
+   
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        
+    <script>
+    	function updateId(id) { 		
+    		document.getElementById("stdid").value = id;
+    	}
+    	
+    	function deleteId(id) {
+    		document.getElementById("stdidd").value = id;
+    	}
+    	
+    </script>
+    
 </body>
 
 </html>

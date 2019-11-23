@@ -23,9 +23,17 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <br><br><br>
     </nav>
     <%-- nav end --%>
-    
+    <div style="margin-left: 20px">
+    	<font color="red">
+				<%
+					if(request.getParameter("msg") != null)
+						out.print(request.getParameter("msg"));
+				%>
+		</font>
+    </div>
     <%-- heading --%>
     <div class="heading">
         <h2 class="display-4 text-center"><marquee behavior="" direction="">Welcome To College Of Engineering & Technology Examination</marquee></h2>
@@ -73,7 +81,36 @@
         </a>
     </div>
     <%-- slider end --%>
-    <br><br>
+    <br>
+    <%-- Department & Subject Name --%>
+    <div class="display-4 text-center"><h1>Department & Subject Name</h1></div><br>
+    <div class="container">
+        <%-- List --%>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-8">
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
+                            href="#list-home" role="tab" aria-controls="home">Information Technology</a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                            <div class="text-center">
+                                <h3>Advanced JAVA</h3>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">This is
+                            first</div>
+                        <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+                        <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <br>
 
     <div class="container">
         <div class="row">
@@ -88,42 +125,7 @@
     <br><br>
 
 
-    <%-- Department & Subject Name --%>
-    <div class="display-4 text-center"><h1>Department & Subject Name</h1></div><br>
-    <div class="container">
-        <%-- List --%>
-        <div class="jumbotron">
-            <div class="row">
-                <div class="col-4">
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
-                            href="#list-home" role="tab" aria-controls="home">Information Technology</a>
-                        <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
-                            href="#list-profile" role="tab" aria-controls="profile">Second</a>
-                        <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
-                            href="#list-messages" role="tab" aria-controls="messages">third</a>
-                        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
-                            href="#list-settings" role="tab" aria-controls="settings">fourth</a>
-                    </div>
-                </div>
-                <div class="col-8">
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                            <div class="text-center">
-                                <h3>Subject Name</h3>
-                                vishal kumar jha
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">This is
-                            first</div>
-                        <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-                        <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        <br><br>
+   
         <jsp:include page="footer.jsp"></jsp:include>
 
     <%-- Optional JavaScript --%>

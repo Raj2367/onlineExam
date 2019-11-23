@@ -33,12 +33,13 @@ public class StudentLogin extends HttpServlet
 		if (status==true) 
 		{
 			HttpSession session = request.getSession();
-			session.setAttribute("id", c.getId());
+			session.setAttribute("name", c.getPassword());
 			response.sendRedirect("instruction.jsp");
 		}
 		else 
 		{
 			out.print("Student credential is wrong");
+			response.sendRedirect("studentLogin.jsp?msg=Invalid Student Login Credential :( :( :(");
 		}
 	}
 }

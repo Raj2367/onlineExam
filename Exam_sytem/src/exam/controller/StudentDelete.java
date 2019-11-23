@@ -18,7 +18,7 @@ import exam.model.ExamDAO;
 @WebServlet("/exam.controller.StudentDelete")
 public class StudentDelete extends HttpServlet {
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
@@ -26,7 +26,17 @@ public class StudentDelete extends HttpServlet {
 
 		//code for delete will be here
 		
-		out.print("i am not here anymore");
+		String id = request.getParameter("id");
+		c.setId(id);
+		int status = ExamDAO.delete(c);
+		
+		if(status>0)
+		{
+			response.sendRedirect("adminWelcome.jsp");
+		}
+		else {
+			out.print("error in deletion");
+		}
 	}
 
 }

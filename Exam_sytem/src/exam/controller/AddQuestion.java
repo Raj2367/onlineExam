@@ -26,9 +26,20 @@ public class AddQuestion extends HttpServlet {
 		response.setContentType("text/html");
 		String question= request.getParameter("question");
 		String answer = request.getParameter("answer");
+		
+		String option1 = request.getParameter("option1");
+		String option2 = request.getParameter("option2");
+		String option3 = request.getParameter("option3");
+		String option4 = request.getParameter("option4");
+		
 		Questions c = new Questions();
 		c.setQuestion(question);
 		c.setAnswer(answer);
+		c.setOption1(option1);
+		c.setOption2(option2);
+		c.setOption3(option3);
+		c.setOption4(option4);
+		
 		int status = ExamDAO.addQuestion(c);
 		if (status>0) 
 		{

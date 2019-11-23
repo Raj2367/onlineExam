@@ -1,13 +1,11 @@
-create a sequence
-==================
-CREATE SEQUENCE dept_seq START WITH 1;
-
 student list table
 ====================
 create table students(
 id varchar2(20),
 name varchar2(20)
 );
+
+insert into students values('1701106244','pruthwi');
 
 
 admin list table
@@ -25,8 +23,12 @@ rules varchar2(150)
 
 question list table
 ====================
-craete table questions(
+create table questions(
 question varchar2(100),
-answer varchar2(50)
+answer varchar2(50),
+option1 varchar2(50),
+option2 varchar2(50),
+option3 varchar2(50),
+option4 varchar2(50)
 );
 

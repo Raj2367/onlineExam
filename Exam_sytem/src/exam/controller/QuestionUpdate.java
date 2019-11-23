@@ -9,32 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import exam.db.Questions;
 import exam.db.Student;
 import exam.model.ExamDAO;
 
 /**
- * Servlet implementation class StudentUpdate
+ * Servlet implementation class QuestionUpdate
  */
-@WebServlet("/exam.controller.StudentUpdate")
-public class StudentUpdate extends HttpServlet {
-	
+@WebServlet("/exam.controller.QuestionUpdate")
+public class QuestionUpdate extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		
-		String id = request.getParameter("id");
-		String name = request.getParameter("name");
+		String que = request.getParameter("que");
+		String newAns = request.getParameter("newAns");
 		
-		Student c = new Student();
-		c.setId(id);
-		c.setPassword(name);
+		Questions c = new Questions();
+		c.setQuestion(que);
+		c.setAnswer(newAns);
 		
-		int status = ExamDAO.updateStudent(c);
+		int status = ExamDAO.updateAnswer(c);
 		
 		if(status>0)
 		{
-			response.sendRedirect("adminWelcome.jsp");
+			response.sendRedirect("addQuestion.jsp");
 		}
 		else
 		{

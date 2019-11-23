@@ -9,36 +9,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import exam.db.Insruction;
 import exam.db.Student;
 import exam.model.ExamDAO;
 
 /**
- * Servlet implementation class StudentUpdate
+ * Servlet implementation class InstructionDelete
  */
-@WebServlet("/exam.controller.StudentUpdate")
-public class StudentUpdate extends HttpServlet {
+@WebServlet("/exam.controller.InstructionDelete")
+public class InstructionDelete extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
+		Insruction c = new Insruction();
+
+		//code for delete will be here
 		
-		String id = request.getParameter("id");
-		String name = request.getParameter("name");
+		String ins = request.getParameter("ins");
+		c.setRules(ins);;
 		
-		Student c = new Student();
-		c.setId(id);
-		c.setPassword(name);
-		
-		int status = ExamDAO.updateStudent(c);
+		int status = ExamDAO.deleteInstruction(c);
 		
 		if(status>0)
 		{
-			response.sendRedirect("adminWelcome.jsp");
+			response.sendRedirect("addInstruction.jsp");
 		}
-		else
-		{
-			out.print("error in updation");
+		else {
+			out.print("error in deletion");
 		}
 	}
 

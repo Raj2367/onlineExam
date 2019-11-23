@@ -41,12 +41,20 @@
             </div><br>
             <div class="col-sm">
                 <div class="text-center"><h2>Student Login</h2></div><br><br>
+                
+			    	<font color="red">
+							<%
+								if(request.getParameter("msg") != null)
+									out.print(request.getParameter("msg"));
+							%>
+					</font>
+				<br>
                 <form action="exam.controller.StudentLogin" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Student Id</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                             placeholder="Enter your id" name="id">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your id with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
@@ -58,7 +66,7 @@
                     </div>
                     <center><button type="submit" class="button">Login</button></center>
                 </form>
-                <center> <button class="button" onclick="window.location.href = 'exit.jsp';">Exit</button> </center>
+                <center> <button type="button" class="btn btn-lg btn-danger" onclick="window.location.href = 'index.jsp?msg=Exited Successfully';">Exit</button> </center>
             </div>
         </div>
     </div>

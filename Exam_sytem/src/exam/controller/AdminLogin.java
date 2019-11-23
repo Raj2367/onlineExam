@@ -40,6 +40,7 @@ public class AdminLogin extends HttpServlet
 		else 
 		{
 			out.print("Admin credential is wrong");
+			response.sendRedirect("adminLogin.jsp?msg=Invalid Admin Login Credential :( :( :(");
 		}
 	}
 }

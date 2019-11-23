@@ -31,7 +31,7 @@
     <!-- heading -->
     <div class="heading">
         <h2 class="display-4 text-center">
-            Welcome <%out.println(session.getAttribute("id")); %>
+            Welcome <%out.println(session.getAttribute("name")); %>
         </h2>
     </div>
     <!-- heading -->

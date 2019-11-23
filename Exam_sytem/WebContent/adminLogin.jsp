@@ -18,7 +18,7 @@
 <body>
     <!-- nav start -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="logo.png" height="40" width="40" alt="">CET,
+        <a class="navbar-brand" href="index.jsp"><img src="logo.png" height="40" width="40" alt="">CET,
             Bhubaneswar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,15 @@
             <div class="col-sm">
                 <div class="text-center">
                     <h2>Administrator Login</h2>
-                </div><br><br>
+                </div>
+                <br>
+                <font color="red">
+							<%
+								if(request.getParameter("msg") != null)
+									out.print(request.getParameter("msg"));
+							%>
+				</font>
+				<br><br>
                 <form  action="exam.controller.AdminLogin" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Admin Id</label>
@@ -63,7 +71,7 @@
                     </div>
                     <center><button type="submit" class="button">Login</button></center>
                 </form>
-                <center><button class="button" onclick="window.location.href = 'exit.jsp';">Exit</button></center>
+                <center><button type="button" class="btn btn-lg btn-danger" onclick="window.location.href = 'index.jsp?msg=Exited Successfully';">Exit</button></center>
             </div>
         </div>
     </div>
